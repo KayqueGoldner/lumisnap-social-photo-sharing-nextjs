@@ -24,6 +24,8 @@
 .DS_Store
 *.pem
 .vscode
+# generated prisma files
+src/generated
 
 # debug
 npm-debug.log*
