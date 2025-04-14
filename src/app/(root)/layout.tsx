@@ -1,11 +1,20 @@
-import { SignInFormDialog } from "@/modules/auth/ui/components/sign-in-form-dialog";
+import { redirect } from "next/navigation";
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => {
+import { auth } from "@/lib/auth";
+import { HomeHeader } from "@/modules/home/ui/layout/home-header";
+
+const RootLayout = async ({ children }: { children: React.ReactNode }) => {
+  const session = await auth();
+
+  if (!session) {
+    redirect("/");
+  }
+
   return (
-    <main className="relative size-full">
-      <SignInFormDialog />
-      {children}
-    </main>
+    <>
+      <HomeHeader session={session} />
+      <main className="relative size-full">{children}</main>
+    </>
   );
 };
 
