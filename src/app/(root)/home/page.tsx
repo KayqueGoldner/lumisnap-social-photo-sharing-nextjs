@@ -1,14 +1,16 @@
 import { auth } from "@/lib/auth";
-import { SignInForm } from "@/modules/auth/ui/components/sign-in-form";
 import { UserButton } from "@/modules/auth/ui/components/user-button";
+import { SignInDialogButton } from "@/modules/auth/ui/components/sign-in-dialog-button";
 
-export default async function Home() {
+const HomePage = async () => {
   const session = await auth();
 
   return (
     <div>
-      <SignInForm />
       <UserButton session={session} />
+      <SignInDialogButton />
     </div>
   );
-}
+};
+
+export default HomePage;
