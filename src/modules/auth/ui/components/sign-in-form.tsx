@@ -3,9 +3,9 @@
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 
-import { Button } from "@/components/ui/button";
 import { signInAction } from "@/modules/auth/actions/auth-actions";
 import { cn } from "@/lib/utils";
+import { SubmitButton } from "@/components/submit-button";
 
 interface SignInFormProps {
   className?: string;
@@ -19,17 +19,17 @@ export const SignInForm = ({ className }: SignInFormProps) => {
         className,
       )}
     >
-      <form action={() => signInAction("github")} className="w-full">
-        <Button variant="outline" className="w-full flex-1">
+      <form action={() => signInAction("github")} className="h-12 w-full">
+        <SubmitButton variant="outline" className="size-full flex-1">
           <FaGithub className="size-6" />
           Continue with GitHub
-        </Button>
+        </SubmitButton>
       </form>
-      <form action={() => signInAction("google")} className="w-full">
-        <Button variant="outline" className="w-full flex-1">
+      <form action={() => signInAction("google")} className="h-12 w-full">
+        <SubmitButton variant="outline" className="size-full flex-1">
           <FcGoogle className="size-6" />
           Continue with Google
-        </Button>
+        </SubmitButton>
       </form>
     </div>
   );
