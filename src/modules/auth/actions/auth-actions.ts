@@ -4,7 +4,7 @@ import type { BuiltInProviderType } from "@auth/core/providers";
 
 import { signIn, signOut } from "@/lib/auth";
 
-export async function signOutAction(redirectTo?: string) {
+export async function signOutAction(prevState: any, redirectTo: string) {
   await signOut({ redirectTo });
 }
 
