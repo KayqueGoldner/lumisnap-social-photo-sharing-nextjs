@@ -12,7 +12,7 @@ interface HomeHeaderProps {
 
 export const HomeHeader = ({ session }: HomeHeaderProps) => {
   return (
-    <header className="flex h-14 w-full items-center justify-center border-b">
+    <header className="fixed top-0 left-0 z-10 flex h-14 w-full items-center justify-center border-b">
       <div className="flex w-full max-w-screen-2xl items-center justify-between px-4">
         <Link
           href="/"
