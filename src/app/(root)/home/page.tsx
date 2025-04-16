@@ -1,13 +1,23 @@
+import { redirect } from "next/navigation";
+
 import { auth } from "@/lib/auth";
-import { UserButton } from "@/modules/auth/ui/components/user-button";
+import { HomepageTabs } from "@/modules/home/ui/layout/homepage-tabs";
 
 const HomePage = async () => {
   const session = await auth();
 
+  if (!session) {
+    redirect("/");
+  }
+
   return (
-    <div>
-      <UserButton session={session} />
-    </div>
+    <section className="relative w-full lg:min-w-md">
+      {/* new post component */}
+      <HomepageTabs />
+      <div className="h-screen pt-3">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+      </div>
+    </section>
   );
 };
 

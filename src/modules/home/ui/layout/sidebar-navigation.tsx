@@ -50,7 +50,7 @@ export const SidebarNavigation = () => {
   const pathname = usePathname();
 
   return (
-    <aside className="sticky top-24 left-0 flex w-14 flex-col gap-6 px-2 sm:w-20 sm:px-5 md:w-60 lg:w-80 lg:px-10">
+    <aside className="sticky top-0 left-0 flex w-14 shrink-0 flex-col gap-6 px-2 pt-5 sm:w-20 sm:px-5 md:w-60 lg:w-72">
       <div className="flex flex-col">
         {SIDEBAR_NAVIGATION_ITEMS.map((item) => (
           <Link
