@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${nunito.variable} bg-background h-screen overflow-hidden antialiased`}
+        className={`${nunito.variable} bg-background relative overflow-y-auto antialiased`}
       >
         <TRPCProvider>{children}</TRPCProvider>
       </body>

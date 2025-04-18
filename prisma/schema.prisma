@@ -18,6 +18,7 @@ model User {
   sessions      Session[]
   // Optional for WebAuthn support
   Authenticator Authenticator[]
+  posts         Post[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -76,4 +77,20 @@ model Authenticator {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@id([userId, credentialID])
+}
+
+model Post {
+  id        String   @id @default(cuid())
+  content   String
+  published Boolean  @default(false)
+  images    String[]
+  location  String?
+  category  String
+  tags      String[]
+
+  authorId String
+  author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

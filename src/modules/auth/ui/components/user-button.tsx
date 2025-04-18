@@ -4,6 +4,7 @@ import { Session } from "next-auth";
 import Image from "next/image";
 import { LogOutIcon } from "lucide-react";
 import { useActionState } from "react";
+import { FaPlus } from "react-icons/fa6";
 
 import { Button } from "@/components/ui/button";
 import { cn, getRandomColor } from "@/lib/utils";
@@ -14,6 +15,7 @@ import {
 } from "@/components/ui/popover";
 import { signOutAction } from "@/modules/auth/actions/auth-actions";
 import { SubmitButton } from "@/components/submit-button";
+import { useCreatePostModal } from "@/modules/post/hooks/use-create-post-modal";
 
 interface UserButtonProps {
   session: Session;
@@ -25,6 +27,7 @@ export const UserButton = ({
   showUserName = true,
 }: UserButtonProps) => {
   const [state, formAction] = useActionState(signOutAction, null);
+  const { onOpen } = useCreatePostModal();
 
   return (
     <Popover>
@@ -78,7 +81,15 @@ export const UserButton = ({
               </p>
             </div>
           </div>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col">
+            <Button
+              variant="ghost"
+              className="bg-muted hover:bg-primary h-10 justify-start rounded-none hover:text-white"
+              onClick={onOpen}
+            >
+              <FaPlus className="mr-2 size-4" />
+              <span>Create a post</span>
+            </Button>
             <form action={() => formAction("/")} className="h-10">
               <SubmitButton
                 variant="ghost"
