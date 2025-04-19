@@ -79,14 +79,19 @@ model Authenticator {
   @@id([userId, credentialID])
 }
 
+enum Visibility {
+  PUBLIC
+  PRIVATE
+  FOLLOWERS
+}
+
 model Post {
-  id        String   @id @default(cuid())
-  content   String
-  published Boolean  @default(false)
-  images    String[]
-  location  String?
-  category  String
-  tags      String[]
+  id         String      @id @default(cuid())
+  content    String?
+  visibility Visibility? @default(PRIVATE)
+  image      String
+  location   String?
+  category   String
 
   authorId String
   author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)

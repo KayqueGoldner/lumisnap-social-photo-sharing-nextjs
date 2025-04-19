@@ -1,8 +1,12 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
+import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
+import { extractRouterConfig } from "uploadthing/server";
 
 import { TRPCProvider } from "@/trpc/client";
+import { ourFileRouter } from "@/app/api/uploadthing/core";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,7 +28,9 @@ export default function RootLayout({
       <body
         className={`${nunito.variable} bg-background relative overflow-y-auto antialiased`}
       >
+        <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
         <TRPCProvider>{children}</TRPCProvider>
+        <Toaster />
       </body>
     </html>
   );
